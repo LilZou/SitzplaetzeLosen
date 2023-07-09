@@ -70,7 +70,7 @@ class Gui:
             platz, vorname, nachname, brille = schueler
 
             
-            row = (i // schueler_pro_reihe) + 3  # Starte bei Zeile 3, um Platz für Eingabefelder und Button zu lassen
+            row = (i // schueler_pro_reihe) + 3  
             column = i % schueler_pro_reihe
 
             

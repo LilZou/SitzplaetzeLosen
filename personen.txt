@@ -1,5 +1,5 @@
 Lura, Ell, 1, False
-Mira, Ell, 2, True
+Mira, Ell, 2, False
 Dennis, Bauer, 3, False
 Jonas, Gilcher, 4, False
 Jan, Ams, 5, True

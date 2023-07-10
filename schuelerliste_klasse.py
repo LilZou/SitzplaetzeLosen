@@ -1,6 +1,6 @@
 class Schuelerliste:
     def __init__(self):
-        
+        #nicht definiert
     
     def get_schueler_liste(self):
         schueler_liste = []

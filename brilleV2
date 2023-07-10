@@ -1,0 +1,100 @@
+import tkinter as tk
+from random import shuffle
+
+class Schueler:
+    def __init__(self, vorname, nachname, sitznummer, brille):
+        self.vorname = vorname
+        self.nachname = nachname
+        self.sitznummer = sitznummer
+        self.brille = brille
+
+class SitzplanApp:
+    def __init__(self, fenster):
+        self.fenster = fenster
+        fenster.title("Sitzplan")
+        
+        self.schueler_liste = []
+        self.label_liste = []
+        self.reihen = tk.IntVar()
+        self.spalten = tk.IntVar()
+        
+        self.create_widgets()
+        
+    def create_widgets(self):
+        tk.Label(self.fenster, text="Anzahl Reihen:").grid(row=0, column=0, padx=100, pady=10, sticky=tk.E)
+        tk.Entry(self.fenster, textvariable=self.reihen).grid(row=0, column=1, padx=100, pady=10)
+        
+        tk.Label(self.fenster, text="Anzahl Spalten:").grid(row=1, column=0, padx=100, pady=10, sticky=tk.E)
+        tk.Entry(self.fenster, textvariable=self.spalten).grid(row=1, column=1, padx=100, pady=10)
+       
+        tk.Button(self.fenster, text="Auslosen", command=self.generate_sitzplan).grid(row=2, columnspan=1, padx=10, pady=10)
+        
+        tk.Label(self.fenster, text="⬆ Datei mit Namen hochladen").grid(row=2, column=1, padx=65, pady=0, sticky=tk.E)
+        
+    def generate_sitzplan(self):
+        durchgaenge = self.reihen.get()
+        reihen = self.spalten.get()
+    
+        # leerer Sitzplan wird erstellt
+        sitzplan = []
+        for i in range(durchgaenge):
+            reihe = []
+            for j in range(reihen):
+                reihe.append(None)
+            sitzplan.append(reihe)
+    
+        # zufällige Zuweisung
+        schueler_liste = self.get_schueler_liste()
+        schueler_mit_brille = [schueler for schueler in schueler_liste if schueler.brille]
+        schueler_ohne_brille = [schueler for schueler in schueler_liste if not schueler.brille]
+    
+        shuffle(schueler_mit_brille)
+        shuffle(schueler_ohne_brille)
+    
+        index_mit_brille = 0
+        index_ohne_brille = 0
+    
+        for i in range(durchgaenge):
+            for j in range(reihen):
+                if i < 2 and index_mit_brille < len(schueler_mit_brille):
+                    sitzplan[i][j] = schueler_mit_brille[index_mit_brille]
+                    index_mit_brille = index_mit_brille + 1
+                else:
+                    sitzplan[i][j] = schueler_ohne_brille[index_ohne_brille]
+                    index_ohne_brille = index_ohne_brille + 1
+    
+        self.display_sitzplan(sitzplan)
+        
+    def get_schueler_liste(self):
+        schueler_liste = []
+        
+        try:
+            with open("personen.txt", "r") as file:
+                for line in file:
+                    vorname, nachname, sitznummer, brille = line.strip().split(",")
+                    sitznummer = sitznummer.strip()
+                    brille = brille.strip() == "True"
+                    schueler = Schueler(vorname, nachname, int(sitznummer), brille)
+                    schueler_liste.append(schueler)
+        except FileNotFoundError:
+            print("Die Datei 'personen.txt' wurde nicht gefunden.")
+        
+        return schueler_liste
+    
+    def display_sitzplan(self, sitzplan):
+        for label in self.label_liste:
+            label.grid_forget()
+            
+        self.label_liste = []
+        
+        for i, reihe in enumerate(sitzplan):
+            for j, schueler in enumerate(reihe):
+                if schueler is not None:
+                    label_text = f"Vorname: {schueler.vorname}\nNachname: {schueler.nachname}\nSitznummer: {schueler.sitznummer}\nBrille: {schueler.brille}"
+                    label = tk.Label(self.fenster, text=label_text, relief=tk.RAISED, width=15, height=5)
+                    label.grid(row=i+3, column=j, padx=10, pady=10)
+                    self.label_liste.append(label)
+
+fenster = tk.Tk()
+app = SitzplanApp(fenster)
+fenster.mainloop()

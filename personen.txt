@@ -1,30 +1,25 @@
-Lura, Ell, 1, False
-Mira, Ell, 2, False
-Dennis, Bauer, 3, False
-Jonas, Gilcher, 4, False
-Jan, Ams, 5, True
-Giancarlo, Jung, 6, False
-Nadja, Wolf, 7, False
-Julius, Lehmann, 8, False
-Charlotte, Ritter, 9, True
-Sudenaz, Kay, 10, False
-Hans, Müller, 11, False
-Heinz, Becker, 12, False
-Klaus, Koch, 13, False
-Werner, Hoffman, 14, False
-Wolfgang, Meyer, 15, True
-Michael, Schmitz, 16, False
-Helmut, Kohl, 17, False
-Manfred, Schmidt, 18, False
-Josef, Liefers, 19, False
-Horst, Seehofer, 20, False
-Jacob, Klein, 21, False
-Luis, Langhard, 22, False
-Maria, Neumann, 23, True
-Ursula, Wagner, 24, True
-Sabine, Wolf, 25, False
-Monika, Römer, 26, False
-Lisa, Tillman, 27, False
-Leonie, Krause, 28, False
-Lea, Decker, 29, True
-Marie, Ippers, 30, False
+Lars, Ambacher, False
+Jan, Ams, False
+Lura, Ell, False
+Mira, Ell, False
+Myriam, Ernst, False
+Lavinia, Friedmann, True
+Laura, Götz, True
+Jannis, Hischmann, False
+Ceyda, Köse, False
+Raffaele, Löffler, False
+Anna-Maria, Papadopoulou, False
+Emely, Rajsar, True
+Lene, Skipka, False
+Leonie, Remter, True
+Michelle, Schmitt, False
+David, Schnakovsky, False
+Nele, Seifermann, True
+Maja, Springer, True
+Paulina, Weck, False
+Jakob, Weiss, True
+Wiktor, Wojasinski,True
+Nadja, Wolf, False
+Luna, Zehe, False
+Jana, Zeller, False
+Lina, Zimmer, False 
